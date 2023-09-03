@@ -8,6 +8,8 @@
     <Folder Include="Context\" />
     <Folder Include="Repositories\Abstract\" />
     <Folder Include="Repositories\Concrete\" />
+    <Folder Include="Repositories\Interfaces\Abstract\" />
+    <Folder Include="Repositories\Interfaces\Concrete\" />
   </ItemGroup>
 
 </Project>
