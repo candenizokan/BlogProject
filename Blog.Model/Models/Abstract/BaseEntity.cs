@@ -8,12 +8,13 @@ namespace Blog.Model.Models.Abstract
     public abstract class BaseEntity
     {
         public int ID { get; set; }
-        private DateTime _createDate=DateTime.Now;
 
-        public DateTime CreateDate
+        private DateTime _createdDate = DateTime.Now;
+
+        public DateTime CreatedDate
         {
-            get { return _createDate=DateTime.Now; }
-            set { _createDate = value; }
+            get { return _createdDate = DateTime.Now; }
+            set { _createdDate = value; }
         }
 
         private Statu _statu=Statu.Active;
