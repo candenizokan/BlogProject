@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Blog.Model.Models.Concrete
@@ -23,5 +24,32 @@ namespace Blog.Model.Models.Concrete
             get { return _statu; }
             set { _statu = value; }
         }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName =>$"{FirstName} {LastName}";
+        public string Password { get; set; }
+        public string ImagePath { get; set; }//kişi fotoğrafının kaynağı
+        
+        [NotMapped]//bu alanı kolon olrak veritabanı tarafında işaretleme
+        public IFormFile Image { get; set; }//fotoğrafı çekip almaya, okumaya, atamaya çalışacak ama db de olmayacak
+
+
+        //navigation property
+
+
+        //1 kullanıcının  çokça makalesi olabilir.
+
+
+
+        //1 kullanıcının takip ettiği çokça kategori olabilir.
+
+
+
+        //1 kullanıcının çokça yorumu olabilir.
+
+
+
+        //1 kullanıcının çokça beğenisi olabilir.
     }
 }
