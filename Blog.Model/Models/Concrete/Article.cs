@@ -1,5 +1,6 @@
 ﻿using Blog.Model.Models.Abstract;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blog.Model.Models.Concrete
@@ -16,14 +17,19 @@ namespace Blog.Model.Models.Concrete
         //navigationProp
 
         //1 makalenin 1 yazarı
-
+        //yazar nesnesi ve yazar id tutmam lazım
+        public string AppUserID { get; set; }//IdentityUser id sini GUID alacağımız için string olacak tuttul
+        public AppUser AppUser { get; set; }
 
         //1 makalenin çokça beğenisi
-
+        public List<Like> Likes { get; set; }
 
         //1 makalenin çokça yorumu
+        public List<Comment> Comments { get; set; }
 
+        //1 makalenin 1 kategorisi////kategori nesnesi ve kategori id tutmam lazım
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
 
-        //1 makalenin 1 kategorisi
     }
 }
