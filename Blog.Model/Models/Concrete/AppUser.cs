@@ -51,5 +51,6 @@ namespace Blog.Model.Models.Concrete
         public List<Comment> Comments { get; set; }
 
         //1 kullanıcının çokça beğenisi olabilir.
+        public List<Like> Likes { get; set; }
     }
 }
