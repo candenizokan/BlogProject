@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Blog.Model.Models.Enums
 {
-    internal class Statu
+    public enum Statu
     {
+        Active=1,
+        Modified,
+        Passive
     }
 }
