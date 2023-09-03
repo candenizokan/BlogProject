@@ -5,6 +5,11 @@ namespace Blog.Model.Models.Concrete
 {
     public class Category : BaseEntity
     {
+        public Category()
+        {
+            Articles = new List<Article>();
+            UserFollewedCategories = new List<UserFollewedCategory>();
+        }
         public string Name { get; set; }
         public string Description { get; set; }
 
