@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Model.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,6 +14,14 @@ namespace Blog.Model.Models.Abstract
         {
             get { return _createDate=DateTime.Now; }
             set { _createDate = value; }
+        }
+
+        private Statu _statu=Statu.Active;
+
+        public Statu Statu
+        {
+            get { return _statu; }
+            set { _statu = value; }
         }
 
     }
