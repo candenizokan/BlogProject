@@ -1,6 +1,8 @@
-﻿namespace Blog.Model.Models.Concrete
+﻿using Blog.Model.Models.Abstract;
+
+namespace Blog.Model.Models.Concrete
 {
-    public class Comment
+    public class Comment : BaseEntity
     {
     }
 }
