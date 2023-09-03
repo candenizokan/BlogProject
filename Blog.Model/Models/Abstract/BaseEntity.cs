@@ -13,7 +13,7 @@ namespace Blog.Model.Models.Abstract
 
         public DateTime CreatedDate
         {
-            get { return _createdDate = DateTime.Now; }
+            get { return _createdDate; }
             set { _createdDate = value; }
         }
 
