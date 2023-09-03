@@ -23,7 +23,8 @@ namespace Blog.Model.TypeConfigurations.Concrete
             builder.HasOne(a => a.AppUser).WithMany(a => a.Comments).HasForeignKey(a => a.AppUserID).OnDelete(DeleteBehavior.Restrict);
 
             //makale
-
+            //bir yorum bir makaleye aittir.--bir makalede çokça yorum vardır--article id üzerinden bağlıdır.
+            builder.HasOne(a => a.Article).WithMany(a => a.Comments).HasForeignKey(a => a.ArticleID).OnDelete(DeleteBehavior.Restrict);
 
             base.Configure(builder);
         }
