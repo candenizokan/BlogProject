@@ -39,7 +39,7 @@ namespace Blog.Model.Models.Concrete
 
 
         //1 kullanıcının  çokça makalesi olabilir.
-
+        public List<Article> Articles { get; set; }
 
 
         //1 kullanıcının takip ettiği çokça kategori olabilir.
