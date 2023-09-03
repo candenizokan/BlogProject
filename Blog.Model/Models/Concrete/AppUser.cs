@@ -10,6 +10,17 @@ namespace Blog.Model.Models.Concrete
 {
     public class AppUser:IdentityUser
     {
+
+        public AppUser()
+        {
+            //kullanıcıyı newlerken listler null gelecek. ben bununla uğraşmamak için ilk baştan boş sepetleri oluşturuyorum.
+            //eğer bir sınıf kendi içerisinde çokça elemanlar barındırıyorsa ctorda list yapısnı oluşturmam lazım
+            //app user ilk geldiğinde adamın makalesi yok yorumu yok hiç bir şeyi yok. bunları doldurmam için bu yapıların oluşması lazım
+            Articles = new List<Article>();
+            Comments = new List<Comment>();
+            Likes = new List<Like>();
+            UserFollewedCategories = new List<UserFollewedCategory>();
+        }
         private DateTime _createdDate = DateTime.Now;
 
         public DateTime CreatedDate
