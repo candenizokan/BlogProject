@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blog.Dal.Context
 {
-    public class ProjectContext
+    public class ProjectContext:IdentityDbContext
     {
     }
 }
