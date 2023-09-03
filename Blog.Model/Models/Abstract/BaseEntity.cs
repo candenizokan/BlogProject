@@ -4,7 +4,16 @@ using System.Text;
 
 namespace Blog.Model.Models.Abstract
 {
-    internal class BaseEntity
+    public abstract class BaseEntity
     {
+        public int ID { get; set; }
+        private DateTime _createDate=DateTime.Now;
+
+        public DateTime CreateDate
+        {
+            get { return _createDate=DateTime.Now; }
+            set { _createDate = value; }
+        }
+
     }
 }
