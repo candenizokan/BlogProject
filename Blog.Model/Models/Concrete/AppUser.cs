@@ -44,7 +44,7 @@ namespace Blog.Model.Models.Concrete
 
         //1 kullanıcının takip ettiği çokça kategori olabilir.
 
-
+        public List<UserFollewedCategory> UserFollewedCategories { get; set; }
 
         //1 kullanıcının çokça yorumu olabilir.
 
