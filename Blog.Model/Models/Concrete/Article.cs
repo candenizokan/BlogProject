@@ -7,6 +7,12 @@ namespace Blog.Model.Models.Concrete
 {
     public class Article: BaseEntity
     {
+        //likelerın ve yorumların boş koleksiyon yapılarını oluşturmam lazım ki çalışma zamanında hata almayayım
+        public Article()
+        {
+            Comments = new List<Comment>();
+            Likes = new List<Like>();
+        }
         public string Title { get; set; }
         public string Content { get; set; }
         public string ImagePath { get; set; }
