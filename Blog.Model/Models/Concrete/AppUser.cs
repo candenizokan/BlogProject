@@ -48,7 +48,7 @@ namespace Blog.Model.Models.Concrete
 
         //1 kullanıcının çokça yorumu olabilir.
 
-
+        public List<Comment> Comments { get; set; }
 
         //1 kullanıcının çokça beğenisi olabilir.
     }
