@@ -19,8 +19,8 @@ namespace Blog.Model.TypeConfigurations.Concrete
             //navigation prop
 
             //user
-
-
+            //bir komentin bir userı vardır.-- userın çokça yorumu var--bu ikisi birbirine bağlıdır appuserıd üzerinden
+            builder.HasOne(a => a.AppUser).WithMany(a => a.Comments).HasForeignKey(a => a.AppUserID).OnDelete(DeleteBehavior.Restrict);
 
             //makale
 
