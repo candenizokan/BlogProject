@@ -29,7 +29,7 @@ namespace Blog.Dal.Repositories.Concrete
             _context.SaveChanges();
         }
 
-        public Task Delete(AppUser appUser)
+        public async Task Delete(AppUser appUser)
         {
             appUser.Statu = Model.Models.Enums.Statu.Passive;
             _context.SaveChangesAsync();
