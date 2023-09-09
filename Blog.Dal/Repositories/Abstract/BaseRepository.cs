@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Blog.Model.Models.Enums;
 
 namespace Blog.Dal.Repositories.Abstract
 {
@@ -30,7 +31,8 @@ namespace Blog.Dal.Repositories.Abstract
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            entity.Statu = Statu.Passive;
+            _context.SaveChanges();
         }
 
         public TResult GetByDefault<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> expression, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
