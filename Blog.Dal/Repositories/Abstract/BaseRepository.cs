@@ -24,7 +24,8 @@ namespace Blog.Dal.Repositories.Abstract
         }
         public void Create(T entity)
         {
-            throw new NotImplementedException();
+            _table.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(T entity)
