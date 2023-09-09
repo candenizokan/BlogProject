@@ -1,6 +1,8 @@
-using Blog.Dal.Context;
+﻿using Blog.Dal.Context;
+using Blog.Model.Models.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +29,22 @@ namespace Blog.Web
             services.AddControllersWithViews();
 
             services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddIdentity<AppUser, IdentityRole>
+                (
+                    x =>
+                    {
+                        //burada giriş işlemler/kullanıcı detayları/şifrelere aidt detaylı isteklerimizi belirtebiliyoruz. Eğer yazmazsak defaulttaki ayarları kabul edecektir.
+                        x.User.RequireUniqueEmail = true;//eşsiz mail olsun mu kişiye ait
+                        x.Password.RequiredLength = 4;//şifre kaç karakter olsun
+                        x.Password.RequireLowercase = false;//şifrede küçük harf zorunlu mu
+                        x.Password.RequireUppercase = false;//şifrede büyük harf zorunlu mu
+                        x.Password.RequireNonAlphanumeric = false;//şifrede noktalama işareti zorunlu mu
+                        x.Password.RequireDigit = false;//şifrede rakam zorunlu mu
+                        x.Password.RequiredUniqueChars = 0;//eşsiz karakter gerekli mi
+                        // gibi gibni daha birçok ayarlama yapılabilir. biz değer atamazsak o defaulttaki değerleri kabul eder. Yer yer bu sebepten hatalar alınabilir. dikkatten kaçan yerler olursa.
+                    }
+                ).AddEntityFrameworkStores<ProjectContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
