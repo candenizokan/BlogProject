@@ -1,6 +1,7 @@
 ﻿using Blog.Dal.Context;
 using Blog.Dal.Repositories.Interfaces.Abstract;
 using Blog.Model.Models.Abstract;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,12 @@ namespace Blog.Dal.Repositories.Abstract
     {
         //benim dbcontext ile konuşmam lazım. ctor ile di.
         private readonly ProjectContext _context;
+        private readonly DbSet<T> _table;//t tipi neyse onun tablosu gelsin
 
         public BaseRepository(ProjectContext context)
         {
             _context = context;
+            _table=_context.Set<T>();
         }
         public void Create(T entity)
         {
