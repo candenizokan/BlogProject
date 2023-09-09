@@ -64,7 +64,7 @@ namespace Blog.Dal.Repositories.Abstract
 
         public List<T> GetDefaults(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _table.Where(expression).ToList();
         }
 
         public void Update(T entity)
