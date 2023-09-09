@@ -23,7 +23,10 @@ namespace Blog.Dal.Repositories.Concrete
         }
         public async Task Create(AppUser appUser)
         {
-           await _manager.CreateAsync(appUser,appUser.Password);
+            await _manager.CreateAsync(appUser,appUser.Password);//identity user olduğu için _manager tarafından çağırıyorum
+            await _manager.AddToRoleAsync(appUser, "Member");//kişiyi member olarak ekle
+
+            _context.SaveChanges();
         }
 
         public Task Delete(AppUser appUser)
