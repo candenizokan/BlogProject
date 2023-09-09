@@ -1,4 +1,5 @@
-﻿using Blog.Model.Models.Concrete;
+﻿using AutoMapper;
+using Blog.Model.Models.Concrete;
 using Blog.Web.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,12 @@ namespace Blog.Web.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IMapper _mapper;
+
+        public AccountController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
         public IActionResult Register()
         {
             return View();
