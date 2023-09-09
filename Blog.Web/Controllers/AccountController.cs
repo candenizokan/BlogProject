@@ -46,5 +46,10 @@ namespace Blog.Web.Controllers
             }
             return View(dto);
         }
+
+        public IActionResult Login(string returnUrl)// kişinin ulaşmak istediği sayfa
+        {
+            
+        }
     }
 }
