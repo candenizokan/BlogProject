@@ -3,6 +3,8 @@ using Blog.Dal.Repositories.Interfaces.Concrete;
 using Blog.Model.Models.Concrete;
 using Blog.Web.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 
 namespace Blog.Web.Controllers
 {
@@ -30,7 +32,9 @@ namespace Blog.Web.Controllers
 
                 AppUser appUser = _mapper.Map<AppUser>(dto);
 
-                var image = image.Load(dto)
+                var image = Image.Load(dto.Image.OpenReadStream());//dosyayı okudum
+                image.Mutate(a => a.Resize(70, 70));
+                image.Save();
             }
             return View(dto);
         }
