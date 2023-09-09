@@ -34,7 +34,14 @@ namespace Blog.Web.Controllers
 
                 var image = Image.Load(dto.Image.OpenReadStream());//dosyayı okudum
                 image.Mutate(a => a.Resize(70, 70));
-                image.Save();
+                image.Save($"wwwroot/images/{appUser.UserName}.jpg");//dosya kaydedildi
+
+                appUser.ImagePath = $"/images/{appUser.UserName}.jpg";//kaydettiğim yer
+
+                _userRepo.Create(appUser);
+
+                return RedirectToAction("Login");//kayıttan sonra login ister
+
             }
             return View(dto);
         }

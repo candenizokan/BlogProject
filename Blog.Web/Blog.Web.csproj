@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Blog.Dal\Blog.Dal.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
