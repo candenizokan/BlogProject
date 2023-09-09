@@ -21,9 +21,9 @@ namespace Blog.Dal.Repositories.Concrete
             _manager = manager;
             _table = _context.Set<AppUser>();
         }
-        public Task Create(AppUser appUser)
+        public async Task Create(AppUser appUser)
         {
-            throw new NotImplementedException();
+           await _manager.CreateAsync(appUser,appUser.Password);
         }
 
         public Task Delete(AppUser appUser)
