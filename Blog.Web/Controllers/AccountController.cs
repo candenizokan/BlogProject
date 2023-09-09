@@ -1,4 +1,5 @@
-﻿using Blog.Web.Models.DTOs;
+﻿using Blog.Model.Models.Concrete;
+using Blog.Web.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Controllers
@@ -16,6 +17,8 @@ namespace Blog.Web.Controllers
             if (ModelState.IsValid)// validasyonlarım tamam mı
             {
                 //aoutomapperdan destek alacağım
+
+                AppUser appUser=
             }
             return View(dto);
         }
