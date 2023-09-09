@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Blog.Model.Models.Enums;
 
 namespace Blog.Dal.Repositories.Concrete
 {
@@ -31,13 +32,18 @@ namespace Blog.Dal.Repositories.Concrete
 
         public async Task Delete(AppUser appUser)
         {
-            appUser.Statu = Model.Models.Enums.Statu.Passive;
-            _context.SaveChangesAsync();
+            //Usermanager delete
+            appUser.Statu = Statu.Passive;
+            await _context.SaveChangesAsync();
         }
 
-        public Task Update(AppUser appUser)
+        public async Task Update(AppUser appUser)
         {
-            throw new NotImplementedException();
+            
+            appUser.Statu = Statu.Modified;
+            _table.Update(appUser);
+            // userManager update //ileride ihtiyacım olacak şifre değişikliği gibi bir durumda
+            await _context.SaveChangesAsync();
         }
     }
 }
