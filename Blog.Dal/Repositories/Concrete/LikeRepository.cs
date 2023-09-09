@@ -26,7 +26,9 @@ namespace Blog.Dal.Repositories.Concrete
 
         public void Delete(Like like)
         {
-            throw new NotImplementedException();
+            //base'den almadığı için direkt siliyorum statuyu pasife çekme gibi bir durum yok burada
+            _table.Remove(like);
+            _context.SaveChanges();
         }
     }
 }
