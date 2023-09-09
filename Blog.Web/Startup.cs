@@ -1,4 +1,6 @@
 ﻿using Blog.Dal.Context;
+using Blog.Dal.Repositories.Concrete;
+using Blog.Dal.Repositories.Interfaces.Concrete;
 using Blog.Model.Models.Concrete;
 using Blog.Web.Models.AutoMappers;
 using Microsoft.AspNetCore.Builder;
@@ -48,6 +50,8 @@ namespace Blog.Web
                 ).AddEntityFrameworkStores<ProjectContext>().AddDefaultTokenProviders();
 
             services.AddAutoMapper(typeof(Mappers));
+
+            services.AddScoped<IAppUserRepository, AppUserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
