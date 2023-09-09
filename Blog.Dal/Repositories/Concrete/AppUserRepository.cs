@@ -31,7 +31,8 @@ namespace Blog.Dal.Repositories.Concrete
 
         public Task Delete(AppUser appUser)
         {
-            throw new NotImplementedException();
+            appUser.Statu = Model.Models.Enums.Statu.Passive;
+            _context.SaveChangesAsync();
         }
 
         public Task Update(AppUser appUser)
