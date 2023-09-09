@@ -1,5 +1,6 @@
 ﻿using Blog.Dal.Context;
 using Blog.Model.Models.Concrete;
+using Blog.Web.Models.AutoMappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -45,6 +46,8 @@ namespace Blog.Web
                         // gibi gibni daha birçok ayarlama yapılabilir. biz değer atamazsak o defaulttaki değerleri kabul eder. Yer yer bu sebepten hatalar alınabilir. dikkatten kaçan yerler olursa.
                     }
                 ).AddEntityFrameworkStores<ProjectContext>().AddDefaultTokenProviders();
+
+            services.AddAutoMapper(typeof(Mappers));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
