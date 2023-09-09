@@ -35,14 +35,23 @@ namespace Blog.Dal.Repositories.Abstract
             _context.SaveChanges();
         }
 
-        public TResult GetByDefault<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> expression, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        public TResult GetByDefault<TResult>(
+            Expression<Func<T, TResult>> selector, 
+            Expression<Func<T, bool>> expression, 
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _table;//kendi tablomu atıyorum IQueryable tipine sorgulanabir bir tablosunu elde ettim
+            if (include != null) query = include(query); //bütün joinleri yaptın gibi düşünebilirsin
+            return query.Where(expression).Select(selector).FirstOrDefault();//karşılaştığım ilk getir
         }
 
-        public List<TResult> GetByDefaults<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> expression, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
+        public List<TResult> GetByDefaults<TResult>(
+            Expression<Func<T, TResult>> selector, 
+            Expression<Func<T, bool>> expression, 
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, 
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
         {
-            throw new NotImplementedException();
+           
         }
 
         public T GetDefault(Expression<Func<T, bool>> expression)
