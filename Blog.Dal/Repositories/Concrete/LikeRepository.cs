@@ -20,7 +20,8 @@ namespace Blog.Dal.Repositories.Concrete
         }
         public void Create(Like like)
         {
-            throw new NotImplementedException();
+            _table.Add(like);
+            _context.SaveChanges();
         }
 
         public void Delete(Like like)
