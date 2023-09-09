@@ -69,7 +69,9 @@ namespace Blog.Dal.Repositories.Abstract
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            entity.Statu = Statu.Modified;
+            _table.Update(entity);
+            _context.SaveChanges();
         }
     }
 }
