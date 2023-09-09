@@ -51,12 +51,15 @@ namespace Blog.Dal.Repositories.Abstract
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, 
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
         {
-           
+            IQueryable<T> query = _table;
+            if (include != null) query = include(query);
+            if(orderBy != null) return orderBy(query).Where(expression).Select(selector).ToList();
+            return query.Where(expression).Select(selector).ToList();
         }
 
         public T GetDefault(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _table.Where(expression).FirstOrDefault();
         }
 
         public List<T> GetDefaults(Expression<Func<T, bool>> expression)
