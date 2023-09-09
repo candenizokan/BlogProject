@@ -29,6 +29,8 @@ namespace Blog.Web.Controllers
                 //aoutomapperdan destek alacağım
 
                 AppUser appUser = _mapper.Map<AppUser>(dto);
+
+                var image = image.Load(dto)
             }
             return View(dto);
         }
