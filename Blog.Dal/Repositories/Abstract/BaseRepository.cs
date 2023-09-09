@@ -1,4 +1,5 @@
-﻿using Blog.Dal.Repositories.Interfaces.Abstract;
+﻿using Blog.Dal.Context;
+using Blog.Dal.Repositories.Interfaces.Abstract;
 using Blog.Model.Models.Abstract;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
@@ -11,6 +12,13 @@ namespace Blog.Dal.Repositories.Abstract
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity//BaseEntity den ne tür gelirse gelsin tek bir base repository comet,category,article gelse crud yapacaksın
     {
+        //benim dbcontext ile konuşmam lazım. ctor ile di.
+        private readonly ProjectContext _context;
+
+        public BaseRepository(ProjectContext context)
+        {
+            _context = context;
+        }
         public void Create(T entity)
         {
             throw new NotImplementedException();
