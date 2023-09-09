@@ -5,6 +5,7 @@ using Blog.Web.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
+using System.Threading.Tasks;
 
 namespace Blog.Web.Controllers
 {
@@ -24,7 +25,7 @@ namespace Blog.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterDTO dto)
+        public async Task<IActionResult> Register(RegisterDTO dto)
         {
             if (ModelState.IsValid)// validasyonlarım tamam mı
             {
@@ -38,7 +39,7 @@ namespace Blog.Web.Controllers
 
                 appUser.ImagePath = $"/images/{appUser.UserName}.jpg";//kaydettiğim yer
 
-                _userRepo.Create(appUser);
+                await _userRepo.Create(appUser);
 
                 return RedirectToAction("Login");//kayıttan sonra login ister
 
