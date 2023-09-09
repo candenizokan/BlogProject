@@ -49,7 +49,7 @@ namespace Blog.Web.Controllers
 
         public IActionResult Login(string returnUrl)// kişinin ulaşmak istediği sayfa
         {
-            
+            return View(new LoginDTO() { ReturnUrl = returnUrl });
         }
     }
 }
