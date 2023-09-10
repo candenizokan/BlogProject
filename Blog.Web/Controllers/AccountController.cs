@@ -47,13 +47,13 @@ namespace Blog.Web.Controllers
             return View(dto);
         }
 
-        public IActionResult Login(string returnUrl)// kişinin ulaşmak istediği sayfa
+        public IActionResult LogIn(string returnUrl)// kişinin ulaşmak istediği sayfa
         {
             return View(new LoginDTO() { ReturnUrl = returnUrl });
         }
 
         [HttpPost]
-        public IActionResult LogIn()
+        public IActionResult LogIn(LoginDTO dto)
         {
             return View();
         }

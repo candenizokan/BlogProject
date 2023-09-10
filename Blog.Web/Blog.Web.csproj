@@ -13,6 +13,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="SixLabors.ImageSharp.Web" Version="2.0.0" />
   </ItemGroup>
 
@@ -21,6 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\Member\Controllers\" />
+    <Folder Include="Areas\Member\Data\" />
+    <Folder Include="Areas\Member\Models\" />
+    <Folder Include="Areas\Member\Views\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
