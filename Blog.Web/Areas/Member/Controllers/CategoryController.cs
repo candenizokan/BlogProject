@@ -51,5 +51,18 @@ namespace Blog.Web.Areas.Member.Controllers
             UpdateCategoryDTO dto = _mapper.Map<UpdateCategoryDTO>(category);
             return View(dto);
         }
+
+        [HttpPost]
+        public IActionResult Update(UpdateCategoryDTO dto)
+        {
+            if (ModelState.IsValid)
+            {
+                //categori nesnesi istiyorum bunu mapper verecek. bir mapleme yapalım
+                Category category = _mapper.Map<Category>(dto);
+                _categoryRepository.Update(category);
+                return RedirectToAction("List");
+            }
+            return View(dto);
+        }
     }
 }
