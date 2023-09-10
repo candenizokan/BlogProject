@@ -1,5 +1,6 @@
 ﻿using Blog.Dal.Context;
 using Blog.Dal.Repositories.Concrete;
+using Blog.Dal.Repositories.Interfaces.Abstract;
 using Blog.Dal.Repositories.Interfaces.Concrete;
 using Blog.Model.Models.Concrete;
 using Blog.Web.Models.AutoMappers;
@@ -52,6 +53,7 @@ namespace Blog.Web
             services.AddAutoMapper(typeof(Mappers));
 
             services.AddScoped<IAppUserRepository, AppUserRepository>();
+            services.AddScoped<IBaseRepository<Category>, CategoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
