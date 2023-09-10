@@ -68,7 +68,10 @@ namespace Blog.Web.Areas.Member.Controllers
 
         public IActionResult Follow(int id)
         {
-            
+            //kimi takip edeceğim
+            Category category = _categoryRepository.GetDefault(a => a.ID == id);
+
+            AppUser appUser = //user managera ihticım var
         }
     }
 }
