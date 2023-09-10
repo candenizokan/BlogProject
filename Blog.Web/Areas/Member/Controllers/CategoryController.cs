@@ -22,7 +22,7 @@ namespace Blog.Web.Areas.Member.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateCategoryDTO dto)
+        public IActionResult Create(CreateCategoryDTO dto)//CreateCategoryDTO dto nesnesi çıkartacağım
         {
             if (ModelState.IsValid)
             {

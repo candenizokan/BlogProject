@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Blog.Model.Models.Concrete;
+using Blog.Web.Areas.Member.Models.DTOs;
 using Blog.Web.Models.DTOs;
 
 namespace Blog.Web.Models.AutoMappers
@@ -11,6 +12,7 @@ namespace Blog.Web.Models.AutoMappers
             //mapplemeler
 
             CreateMap<RegisterDTO, AppUser>();//sen bana registerDTO dan bir appuser nesnesi teslim etmelisin
+            CreateMap<CreateCategoryDTO, Category>();//CreateCategoryDTO dan category nesnesi istiyorum
         }
     }
 }
