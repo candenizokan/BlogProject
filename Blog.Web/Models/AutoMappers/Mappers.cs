@@ -13,6 +13,7 @@ namespace Blog.Web.Models.AutoMappers
 
             CreateMap<RegisterDTO, AppUser>();//sen bana registerDTO dan bir appuser nesnesi teslim etmelisin
             CreateMap<CreateCategoryDTO, Category>();//CreateCategoryDTO dan category nesnesi istiyorum
+            CreateMap<UpdateCategoryDTO, Category>().ReverseMap();//çift yönlü çalışacak
         }
     }
 }
