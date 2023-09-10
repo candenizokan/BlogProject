@@ -5,6 +5,7 @@ using Blog.Web.Areas.Member.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Blog.Model.Models.Enums;
 using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -69,12 +70,14 @@ namespace Blog.Web.Areas.Member.Controllers
         }
 
 
-        public async IActionResult Follow(int id)
+        public async Task<IActionResult> Follow(int id)
         {
             //kimi takip edeceğim
             Category category = _categoryRepository.GetDefault(a => a.ID == id);
 
             AppUser appUser = await _userManager.GetUserAsync(User); //user managera ihticım var bu sınıftan ilgili kişiyi yakalayacağım. asyn çalışıyor. git userı getir dedim 
+
+            //aratablo elemanını oluşturup ya kategori ya appuser üzerinden ekleyeceğim
         }
     }
 }
