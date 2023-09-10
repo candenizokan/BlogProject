@@ -1,3 +1,35 @@
-﻿
+﻿@model List<Category>
 
-@model List<Category>
+
+
+<div class="row">
+    <div class="card col-md-8 offset-2">
+        <div class="card-body">
+            <div class="card-text">Kategori Listeleme Paneli</div>
+            <p>
+                <a asp-action="Create">Yeni Kategori Ekle</a>
+            </p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Kategori Ad</th>
+                        <th>Operasyon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>
+                                <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-success">Güncelle</a>
+                                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Sil</a>
+                                <a asp-action="Follow" asp-route-id="@item.ID" class="btn btn-info">Takip Et</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
