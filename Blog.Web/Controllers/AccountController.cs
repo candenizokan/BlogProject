@@ -70,6 +70,10 @@ namespace Blog.Web.Controllers
                 {
                     //şifre kotrolü yapmam lazım. bunu başka bir sınıf yapıyor. bu durumda bunu di ile almam lazım.
                     SignInResult result = await _signInManager.PasswordSignInAsync(appUser.UserName, dto.Password, false, false);
+                    if (result.Succeeded) //kullanıcı adı ve şifre doğru ise
+                    {
+                        return Redirect(dto.ReturnUrl ?? "/member/appuser/index");//dto.ReturnUrl varsa oraya götür yoksa yani nullsa area içinde home indexe anasayfaya götür. member area aldındaki appuser controllerin indexine git
+                    }
                 }
             }
             return View(dto);
