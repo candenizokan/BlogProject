@@ -55,7 +55,11 @@ namespace Blog.Web.Controllers
         [HttpPost]
         public IActionResult LogIn(LoginDTO dto)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                AppUser appUser =  //appuser aslında identiy user kişisi
+            }
+            return View(dto);
         }
     }
 }
