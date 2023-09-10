@@ -4,6 +4,7 @@ using Blog.Model.Models.Concrete;
 using Blog.Web.Areas.Member.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Blog.Model.Models.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -12,11 +13,13 @@ namespace Blog.Web.Areas.Member.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly UserManager<AppUser> _userManager;
 
-        public CategoryController(IMapper mapper,ICategoryRepository categoryRepository)
+        public CategoryController(IMapper mapper,ICategoryRepository categoryRepository,UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _categoryRepository = categoryRepository;
+            _userManager = userManager;
         }
         public IActionResult Create()
         {
