@@ -64,5 +64,11 @@ namespace Blog.Web.Areas.Member.Controllers
             }
             return View(dto);
         }
+
+
+        public IActionResult Follow(int id)
+        {
+            
+        }
     }
 }
