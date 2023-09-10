@@ -3,6 +3,7 @@ using Blog.Dal.Repositories.Interfaces.Concrete;
 using Blog.Model.Models.Concrete;
 using Blog.Web.Areas.Member.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Blog.Model.Models.Enums;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -33,6 +34,12 @@ namespace Blog.Web.Areas.Member.Controllers
                 return RedirectToAction("List");
             }
             return View(dto);
+        }
+
+        public IActionResult List()
+        {
+            var list = _categoryRepository.GetDefaults(a => a.Statu != Statu.Passive);
+            return View(list);
         }
     }
 }
