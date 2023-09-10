@@ -1,6 +1,7 @@
 ﻿using Blog.Model.Models.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -18,10 +19,10 @@ namespace Blog.Web.Areas.Member.Controllers
             return View();
         }
 
-        public IActionResult LogOut()//kişi yetkilidir. burada [AllowAnonymous] demeye gerek yok. içerdeki kişi dışarı çıkmak istiyor
+        public async Task<IActionResult> LogOut()//kişi yetkilidir. burada [AllowAnonymous] demeye gerek yok. içerdeki kişi dışarı çıkmak istiyor
         {
-            _signInManager.SignOutAsync();//_signInManager giriş çıkış işlemlerinde kullanılıyor. bu sınıfa ihtiyacım var di ile almalıyım
-            return RedirectToAction("Index", "Home");
+            await _signInManager.SignOutAsync();//_signInManager giriş çıkış işlemlerinde kullanılıyor. bu sınıfa ihtiyacım var di ile almalıyım
+            return Redirect("~/");//RedirectToAction("Index","Home"); bu şekilde de kullanılabilir
         }
     }
 }
