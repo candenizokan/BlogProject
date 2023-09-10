@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System.Threading.Tasks;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
+
 
 namespace Blog.Web.Controllers
 {
@@ -58,11 +60,15 @@ namespace Blog.Web.Controllers
         }
 
         [HttpPost]
-        public async IActionResult LogIn(LoginDTO dto)
+        public async Task<IActionResult> LogIn(LoginDTO dto)
         {
             if (ModelState.IsValid)
             {//appuser aslında identiy user kişisi
-                AppUser appUser = await _userManager.FindByEmailAsync() 
+                AppUser appUser = await _userManager.FindByEmailAsync(dto.Email); //içerde böyle bir appuse kişisi var mı
+                if (appUser!=null)
+                {
+                    SignInResult result = await _signInManager.PasswordSignInAsync(appUser.UserName, dto.Password, false, false);
+                }
             }
             return View(dto);
         }
