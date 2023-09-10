@@ -41,5 +41,12 @@ namespace Blog.Web.Areas.Member.Controllers
             var list = _categoryRepository.GetDefaults(a => a.Statu != Statu.Passive);
             return View(list);
         }
+
+        public IActionResult Update(int id)
+        {
+            //kimi güncelleyeceğim
+            Category category = _categoryRepository.GetDefault(a=>a.ID==id);
+            //karşı tarafa tamamını açmam. DTO ile mapleyip onu viewda paylaşacağım
+        }
     }
 }
