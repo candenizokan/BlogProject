@@ -64,9 +64,11 @@ namespace Blog.Web.Controllers
         {
             if (ModelState.IsValid)
             {//appuser aslında identiy user kişisi
+                // kullanıcıyı bulması için userManager sınıfına ihtiyacım var. bir sınıfta başka bir sınıfa ihtiyyaç duyuyorum bunuda di ile almam gerekiyor
                 AppUser appUser = await _userManager.FindByEmailAsync(dto.Email); //içerde böyle bir appuse kişisi var mı
                 if (appUser!=null)
                 {
+                    //şifre kotrolü yapmam lazım. bunu başka bir sınıf yapıyor. bu durumda bunu di ile almam lazım.
                     SignInResult result = await _signInManager.PasswordSignInAsync(appUser.UserName, dto.Password, false, false);
                 }
             }
