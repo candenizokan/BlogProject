@@ -2,6 +2,7 @@
 using Blog.Dal.Repositories.Interfaces.Concrete;
 using Blog.Model.Models.Concrete;
 using Blog.Web.Models.DTOs;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
@@ -13,11 +14,15 @@ namespace Blog.Web.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IAppUserRepository _userRepo;
+        private readonly SignInManager<AppUser> _signInManager;//girişi çıkış işlemleri için çalışıyor
+        private readonly UserManager<AppUser> _userManager;//şifre değiştirme gibi bazı işlemleri kullanmak için
 
-        public AccountController(IMapper mapper, IAppUserRepository userRepo)
+        public AccountController(IMapper mapper, IAppUserRepository userRepo, UserManager<AppUser> userManager,SignInManager<AppUser> signInManager)
         {
             _mapper = mapper;
             _userRepo = userRepo;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
         public IActionResult Register()
         {
@@ -53,11 +58,11 @@ namespace Blog.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult LogIn(LoginDTO dto)
+        public async IActionResult LogIn(LoginDTO dto)
         {
             if (ModelState.IsValid)
-            {
-                AppUser appUser =  //appuser aslında identiy user kişisi
+            {//appuser aslında identiy user kişisi
+                AppUser appUser = await _userManager.FindByEmailAsync() 
             }
             return View(dto);
         }
