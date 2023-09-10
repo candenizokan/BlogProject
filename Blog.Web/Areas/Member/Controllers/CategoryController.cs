@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Blog.Web.Areas.Member.Models.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -9,6 +10,11 @@ namespace Blog.Web.Areas.Member.Controllers
         {
             return View();
         }
-        
+
+        [HttpPost]
+        public IActionResult Create(CreateCategoryDTO dto)
+        {
+            
+        }
     }
 }
