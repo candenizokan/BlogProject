@@ -47,6 +47,9 @@ namespace Blog.Web.Areas.Member.Controllers
             //kimi güncelleyeceğim
             Category category = _categoryRepository.GetDefault(a=>a.ID==id);
             //karşı tarafa tamamını açmam. DTO ile mapleyip onu viewda paylaşacağım
+
+            UpdateCategoryDTO dto = _mapper.Map<UpdateCategoryDTO>(category);
+            return View(dto);
         }
     }
 }
