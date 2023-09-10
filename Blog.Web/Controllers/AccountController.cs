@@ -51,5 +51,11 @@ namespace Blog.Web.Controllers
         {
             return View(new LoginDTO() { ReturnUrl = returnUrl });
         }
+
+        [HttpPost]
+        public IActionResult LogIn()
+        {
+            return View();
+        }
     }
 }
