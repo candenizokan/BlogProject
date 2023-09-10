@@ -53,7 +53,7 @@ namespace Blog.Web
             services.AddAutoMapper(typeof(Mappers));
 
             services.AddScoped<IAppUserRepository, AppUserRepository>();
-            services.AddScoped<IBaseRepository<Category>, CategoryRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
