@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Blog.Dal.Repositories.Interfaces.Concrete;
 using Blog.Web.Areas.Member.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,12 @@ namespace Blog.Web.Areas.Member.Controllers
     public class CategoryController : Controller
     {
         private readonly IMapper _mapper;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryController(IMapper mapper)
+        public CategoryController(IMapper mapper,ICategoryRepository categoryRepository)
         {
             _mapper = mapper;
+            _categoryRepository = categoryRepository;
         }
         public IActionResult Create()
         {
