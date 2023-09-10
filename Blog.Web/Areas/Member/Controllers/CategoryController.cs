@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Blog.Dal.Repositories.Interfaces.Concrete;
+using Blog.Model.Models.Concrete;
 using Blog.Web.Areas.Member.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +27,10 @@ namespace Blog.Web.Areas.Member.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                //categori nesnesi istiyorum bunu mapper verecek. bir mapleme yapalım
+                Category category = _mapper.Map<Category>(dto);
+                _categoryRepository.Create(category);
+                return RedirectToAction("List");
             }
             return View(dto);
         }
