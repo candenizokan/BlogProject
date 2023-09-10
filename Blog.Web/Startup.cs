@@ -54,6 +54,8 @@ namespace Blog.Web
 
             services.AddScoped<IAppUserRepository, AppUserRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            services.AddAuthentication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +73,7 @@ namespace Blog.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
