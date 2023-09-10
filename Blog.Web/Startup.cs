@@ -73,6 +73,15 @@ namespace Blog.Web
 
             app.UseEndpoints(endpoints =>
             {
+                //localhost/areaName/ControllerName/actionName/parametre
+                endpoints.MapControllerRoute(
+                    name: "area",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    );
+
+
+
+                //localhost/ControllerName/actionName/parametre
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
