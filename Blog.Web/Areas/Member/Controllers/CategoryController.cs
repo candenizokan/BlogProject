@@ -78,6 +78,14 @@ namespace Blog.Web.Areas.Member.Controllers
             AppUser appUser = await _userManager.GetUserAsync(User); //user managera ihticım var bu sınıftan ilgili kişiyi yakalayacağım. asyn çalışıyor. git userı getir dedim 
 
             //aratablo elemanını oluşturup ya kategori ya appuser üzerinden ekleyeceğim
+
+            category.UserFollewedCategories.Add
+                (
+                    new UserFollewedCategory() 
+                    { CategoryID=id,Category=category,AppUser=appUser,AppUserID=appUser.Id}
+                );
+            _categoryRepository.Update(category);
+            return RedirectToAction("List");
         }
     }
 }
