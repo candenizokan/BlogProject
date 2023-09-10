@@ -14,7 +14,11 @@ namespace Blog.Web.Areas.Member.Controllers
         [HttpPost]
         public IActionResult Create(CreateCategoryDTO dto)
         {
-            
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View(dto);
         }
     }
 }
