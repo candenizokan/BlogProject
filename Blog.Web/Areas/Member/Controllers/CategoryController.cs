@@ -69,12 +69,12 @@ namespace Blog.Web.Areas.Member.Controllers
         }
 
 
-        public IActionResult Follow(int id)
+        public async IActionResult Follow(int id)
         {
             //kimi takip edeceğim
             Category category = _categoryRepository.GetDefault(a => a.ID == id);
 
-            AppUser appUser = //user managera ihticım var
+            AppUser appUser = await _userManager.GetUserAsync(User); //user managera ihticım var bu sınıftan ilgili kişiyi yakalayacağım. asyn çalışıyor. git userı getir dedim 
         }
     }
 }
