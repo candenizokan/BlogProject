@@ -10,9 +10,11 @@ using Blog.Dal.Repositories.Concrete;
 using AutoMapper;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
+using System;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
+    [Area("Member")]
     public class ArticleController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -52,11 +54,18 @@ namespace Blog.Web.Areas.Member.Controllers
             {
                 //ArticleCreateVM nesnesi var Article çıkart diyeceğim. bunu mappers ile söylemem lazım. bir mapleme daha var. kaynak ArticleCreateVM varış noktam article nesnem. ctoda IMapperada ihtiyacım var şimdi 
 
-                var article = _mapper.Map<ArticleCreateVM>(vm); //mapperın yapamadığı fotoğraf var. fotoğrafı alıp okuyup article'a atamam lazım. kişiyi kayıt ederken kullanmıştık
+                var article = _mapper.Map<Article>(vm); //mapperın yapamadığı fotoğraf var. fotoğrafı alıp okuyup article'a atamam lazım. kişiyi kayıt ederken kullanmıştık
 
+
+                Guid guid = Guid.NewGuid();
                 var image = Image.Load(vm.Image.OpenReadStream());//dosyayı okudum
                 image.Mutate(a => a.Resize(70, 70));//şekillendir
-                image.Save($"wwwroot/images/{appUser.UserName}.jpg");//dosya kaydedildi
+                image.Save($"wwwroot/images/{guid}.jpg");//dosya kaydedildi
+
+                //makalenin fotoğrafı nerede kayıtlı
+                article.ImagePath = $"/images/{guid}.jpg";
+
+                _articleRepository.Create(article);
 
                 return RedirectToAction("List");
             }
