@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Blog.Model.Models.Enums;
+using Blog.Dal.Repositories.Concrete;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -36,6 +37,17 @@ namespace Blog.Web.Areas.Member.Controllers
                     expression : a=> a.Statu != Statu.Passive
                 )
             };
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult Create(ArticleCreateVM vm)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                return RedirectToAction("List");
+            }
             return View(vm);
         }
     }
