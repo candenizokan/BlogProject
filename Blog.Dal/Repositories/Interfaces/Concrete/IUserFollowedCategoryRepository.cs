@@ -11,5 +11,7 @@ namespace Blog.Dal.Repositories.Interfaces.Concrete
         void Delete(UserFollewedCategory entity);
 
         List<UserFollewedCategory> GetFollowedCategories(Expression<Func<UserFollewedCategory, bool>> expression);
+
+        UserFollewedCategory GetFollewedCategory(Expression<Func<UserFollewedCategory, bool>> expression);//tek bir nesneyi dönen değer
     }
 }
