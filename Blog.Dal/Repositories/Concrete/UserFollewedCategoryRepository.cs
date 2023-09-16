@@ -27,6 +27,11 @@ namespace Blog.Dal.Repositories.Concrete
             _projectContext.SaveChanges();
         }
 
+        public UserFollewedCategory GetFollewedCategory(Expression<Func<UserFollewedCategory, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<UserFollewedCategory> GetFollowedCategories(Expression<Func<UserFollewedCategory, bool>> expression)
         {
             // kendi tablosuna git where ile expression yolla. liste haline getir sonuçları göster
