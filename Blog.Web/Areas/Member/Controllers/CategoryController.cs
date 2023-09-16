@@ -49,6 +49,8 @@ namespace Blog.Web.Areas.Member.Controllers
             //içerideki kişi bul usermanager ile
             AppUser appUser = await _userManager.GetUserAsync(User);//içerde oturumu açılmış kim olduğu bilinen kişi
 
+            ViewBag.list = _userCateRepo.GetFollowedCategories(a => a.AppUserID == appUser.Id); // ara tablonun metod kütüphanesi. senin GetFollowedCategories metodun var aldığın expression dahilinde ara tablo elemanlarını getir diyorsun. böylelikle kendi takip ettiklerimi almış oldum.
+
             var list = _categoryRepository.GetDefaults(a => a.Statu != Statu.Passive);
             return View(list);
         }
