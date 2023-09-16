@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blog.Dal.Repositories.Concrete
 {
-    public interface IUserFollewedCategoryRepository
+    public interface IUserFollewedCategoryRepository// baseden kalıtım almadığından IBaseRepositoryden implemantasyon yapmaz.
     {
     }
 }
