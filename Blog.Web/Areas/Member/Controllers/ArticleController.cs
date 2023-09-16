@@ -69,6 +69,12 @@ namespace Blog.Web.Areas.Member.Controllers
 
                 return RedirectToAction("List");
             }
+            //negatif senaryo
+            vm.Categories = _cRepo.GetByDefaults
+                (
+                    selector: a => new GetCategoryDTO { ID = a.ID, Name = a.Name },
+                    expression: a => a.Statu != Statu.Passive
+                );
             return View(vm);
         }
     }
