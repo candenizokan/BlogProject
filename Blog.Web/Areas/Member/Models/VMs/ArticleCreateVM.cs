@@ -1,4 +1,5 @@
 ﻿using Blog.Model.Models.Concrete;
+using Blog.Web.Areas.Member.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 
