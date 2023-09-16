@@ -24,7 +24,7 @@
                             <td>
                                 <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-success">Güncelle</a>
                                 <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Sil</a>
-                                @if (true)
+                                @if ((ViewBag.list as IEnumerable<UserFollewedCategory>).Any(a=>a.CategoryID==item.ID))// benim takip ettiğim categori id item item dönen eşleşiyor mu. eşleşiyorsa takip ediyorumdur.
                                 {
                                     <a asp-action="UnFollow" asp-route-id="@item.ID" class="btn btn-info">Takip Bırak</a>
                                 }
