@@ -2,6 +2,7 @@
 using Blog.Model.Models.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -17,9 +18,10 @@ namespace Blog.Web.Areas.Member.Controllers
             _cRepo = cRepo;
             _articleRepository = articleRepository;
         }
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             //içerdeki kişiyi bulayım. user managera ihtiyacım var . di ile alacağım
+            AppUser appUser = await _userManager.GetUserAsync(User);
             return View();
         }
     }
