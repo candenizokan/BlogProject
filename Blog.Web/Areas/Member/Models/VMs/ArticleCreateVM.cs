@@ -17,5 +17,8 @@ namespace Blog.Web.Areas.Member.Models.VMs
         //CATEGORY
         public int CategoryID { get; set; }
         public List<GetCategoryDTO> Categories { get; set; }
+
+        //Appuser
+        public string AppUserID { get; set; }
     }
 }
