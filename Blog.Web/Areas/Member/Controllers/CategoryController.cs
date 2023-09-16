@@ -105,5 +105,12 @@ namespace Blog.Web.Areas.Member.Controllers
             _userCateRepo.Delete(_userCateRepo.GetFollewedCategory(a => a.AppUserID == appUser.Id && a.CategoryID == id));
             return RedirectToAction("List");
         }
+
+        public IActionResult Delete(int id)
+        {
+            Category category = _categoryRepository.GetDefault(a => a.ID == id);
+            _categoryRepository.Delete(category);
+            return RedirectToAction("List");
+        }
     }
 }
