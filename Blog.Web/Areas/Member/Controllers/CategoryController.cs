@@ -15,12 +15,14 @@ namespace Blog.Web.Areas.Member.Controllers
         private readonly IMapper _mapper;
         private readonly ICategoryRepository _categoryRepository;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IUserFollewedCategoryRepository _userCateRepo;
 
-        public CategoryController(IMapper mapper,ICategoryRepository categoryRepository,UserManager<AppUser> userManager)
+        public CategoryController(IMapper mapper,ICategoryRepository categoryRepository,UserManager<AppUser> userManager, IUserFollewedCategoryRepository userCateRepo)
         {
             _mapper = mapper;
             _categoryRepository = categoryRepository;
             _userManager = userManager;
+            _userCateRepo = userCateRepo;
         }
         public IActionResult Create()
         {
