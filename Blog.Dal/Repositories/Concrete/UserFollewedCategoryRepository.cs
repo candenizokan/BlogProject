@@ -4,6 +4,7 @@ using Blog.Model.Models.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -29,7 +30,7 @@ namespace Blog.Dal.Repositories.Concrete
         public List<UserFollewedCategory> GetFollowedCategories(Expression<Func<UserFollewedCategory, bool>> expression)
         {
             // kendi tablosuna git where ile expression yolla. liste haline getir sonuçları göster
-            return
+            return _table.Where(expression).ToList();
         }
     }
 }
