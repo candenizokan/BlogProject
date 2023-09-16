@@ -11,6 +11,7 @@ using AutoMapper;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -88,8 +89,22 @@ namespace Blog.Web.Areas.Member.Controllers
 
             //listelerken doğrudan article nesnesini yollamayacağım. listeleme sayfası üzerinden edit yada delete yapıyorum. uzun content bilgisine ihtiyacım yok. title foto bilgisi id arka planda tutarım oluşturucusunu gösteririrm. detay için detail sayfası yaparım orada ne varsa her şeyi gösteririrm.
             // madem herkesi göndermiyorum propertylerine karar vermem lazım. bir vm nesnesi oluşturmaml lazım gerarticlevm
+
+            var list = _articleRepository.GetByDefaults
+                (
+                    selector: a => new GetArticleVM()
+                    {
+                        ArticleID = a.ID,
+                        CategoryName = a.Category.Name,
+                        FullName = a.AppUser.FullName,
+                        Title = a.Title,
+                        Image = a.ImagePath
+                    },
+                    expression: a => a.Statu != Statu.Passive && a.AppUserID == appUser.Id,
+                    include: a => a.Include(a => a.AppUser).Include(a => a.Category)
+                );
            
-            return View();
+            return View(list);
         }
     }
 }
