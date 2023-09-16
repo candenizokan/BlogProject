@@ -77,5 +77,16 @@ namespace Blog.Web.Areas.Member.Controllers
                 );
             return View(vm);
         }
+
+        public async Task<IActionResult> List()
+        {
+           
+
+            //içerideki kişi bul usermanager ile
+            AppUser appUser = await _userManager.GetUserAsync(User);//içerde oturumu açılmış kim olduğu bilinen kişi
+
+           
+            return View();
+        }
     }
 }
