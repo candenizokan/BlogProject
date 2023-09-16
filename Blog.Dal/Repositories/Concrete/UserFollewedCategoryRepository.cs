@@ -27,7 +27,7 @@ namespace Blog.Dal.Repositories.Concrete
             _projectContext.SaveChanges();
         }
 
-        public UserFollewedCategory GetFollewedCategories(Expression<Func<UserFollewedCategory, bool>> expression)
+        public UserFollewedCategory GetFollewedCategory(Expression<Func<UserFollewedCategory, bool>> expression)
         {
             return _table.Where(expression).FirstOrDefault();//tek bir değeri getir expressiona göre
         }

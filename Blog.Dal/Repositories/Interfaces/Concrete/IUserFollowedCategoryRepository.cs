@@ -12,6 +12,6 @@ namespace Blog.Dal.Repositories.Interfaces.Concrete
 
         List<UserFollewedCategory> GetFollowedCategories(Expression<Func<UserFollewedCategory, bool>> expression);
 
-        UserFollewedCategory GetFollewedCategories(Expression<Func<UserFollewedCategory, bool>> expression);//tek bir nesneyi dönen değer
+        UserFollewedCategory GetFollewedCategory(Expression<Func<UserFollewedCategory, bool>> expression);
     }
 }
