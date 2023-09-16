@@ -29,7 +29,7 @@ namespace Blog.Dal.Repositories.Concrete
 
         public UserFollewedCategory GetFollewedCategory(Expression<Func<UserFollewedCategory, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _table.Where(expression).FirstOrDefault();//tek bir değeri getir expressiona göre
         }
 
         public List<UserFollewedCategory> GetFollowedCategories(Expression<Func<UserFollewedCategory, bool>> expression)
