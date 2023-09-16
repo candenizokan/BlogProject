@@ -14,6 +14,8 @@ namespace Blog.Web.Areas.Member.Models.VMs
         public IFormFile Image { get; set; }
 
 
-        
+        //CATEGORY
+        public int CategoryID { get; set; }
+        public List<GetCategoryDTO> Categories { get; set; }
     }
 }
