@@ -45,7 +45,7 @@ namespace Blog.Web.Areas.Member.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                //ArticleCreateVM nesnesi var Article çıkart diyeceğim. bunu mappers ile söylemem lazım. bir mapleme daha var. kaynak ArticleCreateVM varış noktam article nesnem
                 return RedirectToAction("List");
             }
             return View(vm);
