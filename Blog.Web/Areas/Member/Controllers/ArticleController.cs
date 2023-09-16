@@ -85,6 +85,9 @@ namespace Blog.Web.Areas.Member.Controllers
             //içerideki kişi bul usermanager ile
             AppUser appUser = await _userManager.GetUserAsync(User);//içerde oturumu açılmış kim olduğu bilinen kişi
 
+
+            //listelerken doğrudan article nesnesini yollamayacağım. listeleme sayfası üzerinden edit yada delete yapıyorum. uzun content bilgisine ihtiyacım yok. title foto bilgisi id arka planda tutarım oluşturucusunu gösteririrm. detay için detail sayfası yaparım orada ne varsa her şeyi gösteririrm.
+            // madem herkesi göndermiyorum propertylerine karar vermem lazım. bir vm nesnesi oluşturmaml lazım gerarticlevm
            
             return View();
         }
