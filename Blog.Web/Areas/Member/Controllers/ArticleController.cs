@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Blog.Model.Models.Enums;
 using Blog.Dal.Repositories.Concrete;
+using AutoMapper;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -15,12 +16,14 @@ namespace Blog.Web.Areas.Member.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly ICategoryRepository _cRepo;
         private readonly IArticleRepository _articleRepository;
+        private readonly IMapper _mapper;
 
-        public ArticleController(UserManager<AppUser> userManager, ICategoryRepository cRepo, IArticleRepository articleRepository)
+        public ArticleController(UserManager<AppUser> userManager, ICategoryRepository cRepo, IArticleRepository articleRepository, IMapper mapper)
         {
             _userManager = userManager;
             _cRepo = cRepo;
             _articleRepository = articleRepository;
+            _mapper = mapper;
         }
         public async Task<IActionResult> Create()
         {
