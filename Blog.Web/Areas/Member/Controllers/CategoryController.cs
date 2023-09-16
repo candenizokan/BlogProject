@@ -101,6 +101,9 @@ namespace Blog.Web.Areas.Member.Controllers
         {
             AppUser appUser = await _userManager.GetUserAsync(User);//kişimi bul
             //bana şu ara tablo elemanını getir bu nesneye veriyor olman lazım. delete çağırmadan çmce tek bir useCategoryfollowed nesnesini almam laım. tekrar repolarımı gideceğim
+
+            _userCateRepo.Delete(_userCateRepo.GetFollewedCategory(a => a.AppUserID == appUser.Id && a.CategoryID == id));
+            return RedirectToAction("List");
         }
     }
 }
