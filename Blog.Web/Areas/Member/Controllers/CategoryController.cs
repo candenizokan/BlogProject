@@ -96,5 +96,10 @@ namespace Blog.Web.Areas.Member.Controllers
             _categoryRepository.Update(category);
             return RedirectToAction("List");
         }
+
+        public async Task<IActionResult> UnFollow(int id)
+        {
+
+        }
     }
 }
