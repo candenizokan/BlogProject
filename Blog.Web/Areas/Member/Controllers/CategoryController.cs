@@ -42,6 +42,7 @@ namespace Blog.Web.Areas.Member.Controllers
 
         public IActionResult List()
         {
+            //view bag ile ara tabloya(UserFollewedCategories) git app user ıd ile eşleşenleri getir diyeceğim. buna bir repo yazmam gerekecek. unfollowda nesneyi uçurmam lazım. ara tablo elemanlarının hepsini getirecek ve silecek actiona ihtiyacım var. repolar context ile konuşarak gerçekleştirdik şimdiye kadar. yine aynısını yapmam lazım. katmanlı mimaride contexte gidemem. ilk önce interface oluşturacağım sonra concrete. ara tablo nesneleri base entityden kalıtım almıyor. metodlarını ortak bir yere yazmama gerek yok. baseden kalıtım alanlar gibi davranmayacak.
             var list = _categoryRepository.GetDefaults(a => a.Statu != Statu.Passive);
             return View(list);
         }
