@@ -1,8 +1,11 @@
 ﻿using Blog.Dal.Repositories.Interfaces.Concrete;
 using Blog.Model.Models.Concrete;
+using Blog.Web.Areas.Member.Models.DTOs;
+using Blog.Web.Areas.Member.Models.VMs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Blog.Model.Models.Enums;
 
 namespace Blog.Web.Areas.Member.Controllers
 {
@@ -22,7 +25,18 @@ namespace Blog.Web.Areas.Member.Controllers
         {
             //içerdeki kişiyi bulayım. user managera ihtiyacım var . di ile alacağım
             AppUser appUser = await _userManager.GetUserAsync(User);
-            return View();
+
+            //articlecreate vm oluştur
+            ArticleCreateVM vm = new ArticleCreateVM()
+            {
+                AppUserID = appUser.Id,
+                Categories = _cRepo.GetByDefaults
+                (
+                    selector: a=> new GetCategoryDTO { ID = a.ID,Name=a.Name},
+                    expression : a=> a.Statu != Statu.Passive
+                )
+            };
+            return View(vm);
         }
     }
 }
