@@ -21,12 +21,15 @@ namespace Blog.Dal.Repositories.Concrete
         }
         public void Delete(UserFollewedCategory entity)
         {
-            throw new NotImplementedException();
+            //sileceğim nesne elimde. kendi tablosuna git remove et. sonra context üzerinden kaydet
+            _table.Remove(entity);
+            _projectContext.SaveChanges();
         }
 
         public List<UserFollewedCategory> GetFollowedCategories(Expression<Func<UserFollewedCategory, bool>> expression)
         {
-            throw new NotImplementedException();
+            // kendi tablosuna git where ile expression yolla. liste haline getir sonuçları göster
+            return
         }
     }
 }
