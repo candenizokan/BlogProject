@@ -41,8 +41,8 @@ namespace Blog.Web.Areas.Member.Controllers
                 AppUserID = appUser.Id,
                 Categories = _cRepo.GetByDefaults
                 (
-                    selector: a=> new GetCategoryDTO { ID = a.ID,Name=a.Name},
-                    expression : a=> a.Statu != Statu.Passive
+                    selector: a => new GetCategoryDTO { ID = a.ID, Name = a.Name },
+                    expression: a => a.Statu != Statu.Passive
                 )
             };
             return View(vm);
@@ -81,7 +81,7 @@ namespace Blog.Web.Areas.Member.Controllers
 
         public async Task<IActionResult> List()
         {
-           
+
 
             //içerideki kişi bul usermanager ile
             AppUser appUser = await _userManager.GetUserAsync(User);//içerde oturumu açılmış kim olduğu bilinen kişi
@@ -103,7 +103,7 @@ namespace Blog.Web.Areas.Member.Controllers
                     expression: a => a.Statu != Statu.Passive && a.AppUserID == appUser.Id,
                     include: a => a.Include(a => a.AppUser).Include(a => a.Category)
                 );
-           
+
             return View(list);
         }
 
@@ -111,17 +111,43 @@ namespace Blog.Web.Areas.Member.Controllers
         {
             //hangi article yakalamam lazım. içerdekilerin idsi hangisi eşleşirse benimkiyle onu getir
 
-            Article article = _articleRepository.GetDefault(a=>a.ID==id);//article update vm oluşturmam lazım. buradan sonra oraya gideceğim
+            Article article = _articleRepository.GetDefault(a => a.ID == id);//article update vm oluşturmam lazım. buradan sonra oraya gideceğim
 
             var updatedArticle = _mapper.Map<ArticleUpdateVM>(article);
 
             updatedArticle.Categories = _cRepo.GetByDefaults
                 (
-                    selector:a=> new GetCategoryDTO() { ID=a.ID,Name=a.Name},
-                    expression: a=> a.Statu!=Statu.Passive
+                    selector: a => new GetCategoryDTO() { ID = a.ID, Name = a.Name },
+                    expression: a => a.Statu != Statu.Passive
                 );
 
             return View(updatedArticle);
+        }
+
+        [HttpPost]
+        public IActionResult Update(ArticleUpdateVM vm)
+        {
+            if (ModelState.IsValid)
+            {
+                var article = _mapper.Map<Article>(vm);
+                using var image = Image.Load(vm.Image.OpenReadStream());
+                image.Mutate(a => a.Resize(70, 70));
+
+                Guid guid = Guid.NewGuid();
+                image.Save($"wwwroot/images/{guid}.jpeg");
+
+                article.ImagePath = $"/images/{guid}.jpeg";
+                _articleRepository.Update(article);
+                return RedirectToAction("List");
+
+            }
+            return View(vm);
+
+            //toDo:: negatşf senaryoda yani validasyon kontroleri gerçekleşmezse categories ?? cshtmlde sorun olur.
+
+            //toDo: makale fotoğrafını güncellemezse ? eski fotoğraf kullanıcıya sunulması istenirse güncellenmeli
+
+            //toDo: fotoğrafı güncellerse bu makaleye ait eski fotoğraf wwwroot altından silinmeli ve yerine yenisi eklenmeli
         }
     }
 }
