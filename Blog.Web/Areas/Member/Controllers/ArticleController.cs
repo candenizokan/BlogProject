@@ -127,6 +127,7 @@ namespace Blog.Web.Areas.Member.Controllers
         [HttpPost]
         public IActionResult Update(ArticleUpdateVM vm)
         {
+            //toDo : kayıtlı kullanıcı login olduktan sonra içerideki bir başka kişinin makalesini güncelleyememeli
             if (ModelState.IsValid)
             {
                 var article = _mapper.Map<Article>(vm);
