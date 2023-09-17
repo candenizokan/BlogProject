@@ -16,6 +16,7 @@ namespace Blog.Web.Models.AutoMappers
             CreateMap<CreateCategoryDTO, Category>();//CreateCategoryDTO dan category nesnesi istiyorum
             CreateMap<UpdateCategoryDTO, Category>().ReverseMap();//çift yönlü çalışacak
             CreateMap<ArticleCreateVM, Article>();
+            CreateMap<Article, ArticleUpdateVM>().ReverseMap();// hem vm den article hemde tam tersini yapsın. çift yönlü kullanım
         }
     }
 }
