@@ -111,7 +111,7 @@ namespace Blog.Web.Areas.Member.Controllers
         {
             //hangi article yakalamam lazım. içerdekilerin idsi hangisi eşleşirse benimkiyle onu getir
 
-            Article article = _articleRepository.GetDefault(a=>a.ID==id);
+            Article article = _articleRepository.GetDefault(a=>a.ID==id);//article update vm oluşturmam lazım. buradan sonra oraya gideceğim
 
             
 
