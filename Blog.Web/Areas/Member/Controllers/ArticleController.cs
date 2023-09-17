@@ -109,7 +109,9 @@ namespace Blog.Web.Areas.Member.Controllers
 
         public IActionResult Update(int id)
         {
-            //hangi article yakalamam lazım
+            //hangi article yakalamam lazım. içerdekilerin idsi hangisi eşleşirse benimkiyle onu getir
+
+            Article article = _articleRepository.GetDefault(a=>a.ID==id);
 
             
 
