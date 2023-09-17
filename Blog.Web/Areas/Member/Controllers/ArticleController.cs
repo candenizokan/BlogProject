@@ -113,7 +113,7 @@ namespace Blog.Web.Areas.Member.Controllers
 
             Article article = _articleRepository.GetDefault(a=>a.ID==id);//article update vm oluşturmam lazım. buradan sonra oraya gideceğim
 
-            
+            var updatedArticle = _mapper.Map<ArticleUpdateVM>(article);
 
             return View();
         }
