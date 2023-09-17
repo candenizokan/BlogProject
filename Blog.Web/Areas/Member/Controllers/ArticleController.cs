@@ -159,5 +159,10 @@ namespace Blog.Web.Areas.Member.Controllers
             _articleRepository.Delete(article);
             return RedirectToAction("List");
         }
+
+        public IActionResult Detail(int id)
+        {
+            
+        }
     }
 }
