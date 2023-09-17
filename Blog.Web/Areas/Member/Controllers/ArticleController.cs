@@ -115,7 +115,13 @@ namespace Blog.Web.Areas.Member.Controllers
 
             var updatedArticle = _mapper.Map<ArticleUpdateVM>(article);
 
-            return View();
+            updatedArticle.Categories = _cRepo.GetByDefaults
+                (
+                    selector:a=> new GetCategoryDTO() { ID=a.ID,Name=a.Name},
+                    expression: a=> a.Statu!=Statu.Passive
+                );
+
+            return View(updatedArticle);
         }
     }
 }
