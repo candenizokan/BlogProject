@@ -150,5 +150,14 @@ namespace Blog.Web.Areas.Member.Controllers
 
             //toDo: fotoğrafı güncellerse bu makaleye ait eski fotoğraf wwwroot altından silinmeli ve yerine yenisi eklenmeli
         }
+
+        public IActionResult Delete(int id)
+        {
+            //article yakala
+            Article article = _articleRepository.GetDefault(a => a.ID == id);
+            //article repo içindeki metodu çağır elimdeki budur pasive çek,
+            _articleRepository.Delete(article);
+            return RedirectToAction("List");
+        }
     }
 }
