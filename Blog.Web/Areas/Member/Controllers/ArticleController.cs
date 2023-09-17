@@ -106,5 +106,14 @@ namespace Blog.Web.Areas.Member.Controllers
            
             return View(list);
         }
+
+        public IActionResult Update(int id)
+        {
+            //hangi article yakalamam lazım
+
+            
+
+            return View();
+        }
     }
 }
