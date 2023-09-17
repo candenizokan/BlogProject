@@ -28,7 +28,7 @@ namespace Blog.Web.Areas.Member.Models.VMs
         //APPuser
 
         public string UserID { get; set; }
-        public string UserFullNamel { get; set; }
+        public string UserFullName { get; set; }
         public string UserImage { get; set; }
         public DateTime UserCreatedDate { get; set; }
 
