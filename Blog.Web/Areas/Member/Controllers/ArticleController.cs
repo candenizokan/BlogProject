@@ -162,7 +162,7 @@ namespace Blog.Web.Areas.Member.Controllers
 
         public IActionResult Detail(int id)
         {
-            
+            //articledetailvm oluşmalı.
         }
     }
 }
