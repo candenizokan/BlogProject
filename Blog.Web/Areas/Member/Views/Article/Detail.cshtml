@@ -24,4 +24,28 @@
             </div>
         </div>
     </div>
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8 blog-main">
+               
+                <div class="blog-post">
+                    <h2 class="blog-post-title">@Model.Title</h2>
+                    <p class="blog-post-meta">@Model.CreatedDate.ToShortDateString() by <a href="#">@Model.UserFullName</a></p>
+
+                    <p>@Model.Content</p>
+                    <hr>
+                </div>
+                <div class="row m-3">
+                    @if (Model.Likes.Any(a=>a.AppUserID==Model.UserID))
+                    {
+                        <a>
+                            <i class="fa fa-heart" style="color:red"></i>
+                            <label>@Model.Likes.Count()</label>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </main>
 </div>
