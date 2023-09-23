@@ -1,7 +1,10 @@
 ﻿using Blog.Dal.Repositories.Interfaces.Concrete;
-using Blog.Web.Models.VMs
+using Blog.Web.Models.VMs;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Blog.Model.Models.Enums;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Blog.Web.Views.Shared.Components.ArticlesWith
 {
@@ -27,19 +30,21 @@ namespace Blog.Web.Views.Shared.Components.ArticlesWith
 
             List<GetArticleVM> list = _articleRepository.GetByDefaults
                 (
-                    selector: a=> new GetArticleVM() // her articledan get article vm nesnesi vereceksin
-                    { 
+                    selector: a => new GetArticleVM() // her articledan get article vm nesnesi vereceksin
+                    {
                         Title = a.Title,
                         Content = a.Content,
                         ImagePath = a.ImagePath,
                         CreatedDate = a.CreatedDate,
-                        UserFullName=a.AppUser.FullName,
+                        UserFullName = a.AppUser.FullName,
                         CategoryName = a.Category.Name,
                         AppUserID = a.AppUserID,
                         ArticleID = a.ID
                     },
-                    expression:
-                );
+                    expression: a => a.Statu != Statu.Passive,
+                    include: a => a.Include(a => a.Category).Include(a => a.AppUser),
+                    orderBy: a => a.OrderByDescending(a => a.CreatedDate)
+                ); ;
 
         }
 
