@@ -38,15 +38,15 @@
                 </div>
                 <div class="row m-3">
                     @if (Model.Likes.Any(a=>a.AppUserID==Model.UserID))
-                    {
-                        <a>
+                    {//beğendiyse unlike a çekmem lazım
+                        <a asp-action="UnLike" asp-controller="Article" asp-route-id="@Model.ArticleID">
                             <i class="fa fa-heart" style="color:red"></i>
                             <label>@Model.Likes.Count()</label>
                         </a>
                     }
                     else
                     {
-                        <a>
+                        <a asp-action="Like" asp-route-id="@Model.ArticleID">
                             <i class="fa fa-heart" style="color:red"></i>
                             <label>@Model.Likes.Count()</label>
                         </a>
