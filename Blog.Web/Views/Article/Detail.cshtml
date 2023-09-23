@@ -1,1 +1,42 @@
-﻿
+﻿@model ArticleDetailVM
+
+<div class="container">
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+            <img src="@Model.Image" />
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0">Makale Yazarı: <a asp-action="UserDetail" asp-controller="AppUser" asp-area="Member" asp-route-id="@Model.UserID">@Model.UserFullName</a></h3>
+                    <div class="mb-1 text-muted">Makale Yazarı @Model.UserCreatedDate.ToShortDateString() beri aramızda..</div>
+                    <p class="card-text mb-auto">Makale Kategorisi: <a asp-action="FilterWithCategory" asp-route-id="@Model.CategoryID">@Model.CategoryName</a></p>
+                    <p class="card-text mb-auto">Makalenin Oluşma Tarihi:@Model.CreatedDate</p>
+                    <p class="card-text mb-auto">Makalenin Beğeni Sayısı:@Model.Likes.Count()</p>
+
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img src="@Model.UserImage" width="200" height="300" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8 blog-main">
+
+                <div class="blog-post">
+                    <h2 class="blog-post-title">@Model.Title</h2>
+                    <p class="blog-post-meta">@Model.CreatedDate.ToShortDateString() by <a href="#">@Model.UserFullName</a></p>
+
+                    <p>@Model.Content</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
