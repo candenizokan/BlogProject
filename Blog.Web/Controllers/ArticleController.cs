@@ -4,7 +4,7 @@ namespace Blog.Web.Controllers
 {
     public class ArticleController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Detail(int id)//makale id
         {
             return View();
         }
