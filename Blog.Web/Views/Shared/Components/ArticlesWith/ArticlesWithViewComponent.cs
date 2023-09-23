@@ -1,6 +1,10 @@
-﻿namespace Blog.Web.Views.Shared.Components.ArticlesWith
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Blog.Web.Views.Shared.Components.ArticlesWith
 {
-    public class ArticlesWithViewComponent
+    public class ArticlesWithViewComponent : ViewComponent
     {
+
+        //En güncel 10 makaleyi getirelim
     }
 }
