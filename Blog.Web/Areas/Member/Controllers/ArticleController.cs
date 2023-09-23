@@ -188,8 +188,14 @@ namespace Blog.Web.Areas.Member.Controllers
             return View(article);
         }
         //unlike yazarken id adlı parametre göndereceğim makalenin idsi olacak o
-        public IActionResult Like(int id)
+        public async Task<IActionResult> Like(int id)
         {
+            Article article = _articleRepository.GetDefault(a => a.ID == id);
+
+            AppUser appUser = await _userManager.GetUserAsync(User);
+
+            Like like = new Like() { ArticleID=id, Article=article, AppUser = appUser, AppUserID=appUser.Id};
+
             return View();
         }
     }
