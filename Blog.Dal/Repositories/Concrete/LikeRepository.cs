@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Blog.Dal.Repositories.Concrete
@@ -32,9 +33,14 @@ namespace Blog.Dal.Repositories.Concrete
             _context.SaveChanges();
         }
 
-        public Like GetDefault(int id,string appUserId)
+        //public Like GetDefault(int id,string appUserId)
+        //{
+        //    return _table.FirstOrDefault(like => like.ArticleID == id && like.AppUserID == appUserId);
+        //}
+
+        public Like GetDefault(Expression<Func<Like, bool>> expression)
         {
-            return _table.FirstOrDefault(like => like.ArticleID == id && like.AppUserID == appUserId);
+            return _table.Where(expression).FirstOrDefault();//şarta bağlı git getir.
         }
     }
 }

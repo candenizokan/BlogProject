@@ -210,12 +210,13 @@ namespace Blog.Web.Areas.Member.Controllers
             AppUser appUser = await _userManager.GetUserAsync(User); // Giriş yapmış kullanıcıyı bulun
 
             // Kullanıcının daha önce bu makaleyi beğenip beğenmediğini kontrol edin
-            Like unlike = _likeRepository.GetDefault(article.ID,appUser.Id);
+            //Like unlike = _likeRepository.GetDefault(article.ID,appUser.Id);
+            Like like = _likeRepository.GetDefault(a=>a.AppUserID==appUser.Id && a.ArticleID==article.ID);
 
-            if (unlike != null)
+            if (like != null)
             {
                 // Eğer kullanıcı daha önce beğenmişse, beğeniyi kaldırın
-                _likeRepository.Delete(unlike);
+                _likeRepository.Delete(like);
             }
 
             return RedirectToAction("Detail", new { id = id }); // Detail sayfasına geri dönün

@@ -1,6 +1,7 @@
 ﻿using Blog.Model.Models.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Blog.Dal.Repositories.Interfaces.Concrete
@@ -11,6 +12,8 @@ namespace Blog.Dal.Repositories.Interfaces.Concrete
         void Create(Like like);
         void Delete(Like like);
 
-        Like GetDefault(int id,string appUserId);
+        //Like GetDefault(int id,string appUserId);//tek bir like nesnesi döndür
+
+        Like GetDefault(Expression<Func<Like, bool>> expression);
     }
 }
