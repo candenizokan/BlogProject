@@ -190,11 +190,11 @@ namespace Blog.Web.Areas.Member.Controllers
         //unlike yazarken id adlı parametre göndereceğim makalenin idsi olacak o
         public async Task<IActionResult> Like(int id)
         {
-            Article article = _articleRepository.GetDefault(a => a.ID == id);
+            Article article = _articleRepository.GetDefault(a => a.ID == id);//ilgili makaleyi yakaladım
 
-            AppUser appUser = await _userManager.GetUserAsync(User);
+            AppUser appUser = await _userManager.GetUserAsync(User);//login olan kullanıcıyı bulabiliyorum
 
-            Like like = new Like() { ArticleID=id, Article=article, AppUser = appUser, AppUserID=appUser.Id};
+            Like like = new Like() { ArticleID=id, Article=article, AppUser = appUser, AppUserID=appUser.Id};// like nesnesi oluştur. hangi makaleyi khangi kişi başında set et. bu like'ı oluşturacağım ihtiyacım var like repoya şimdi onu oluşturacağım article controllerda like repoya ihtiyacım var. DI ile alacağım ilikerepo ver diyeceğim like repo verecek
 
             return View();
         }
