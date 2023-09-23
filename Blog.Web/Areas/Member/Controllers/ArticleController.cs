@@ -187,5 +187,10 @@ namespace Blog.Web.Areas.Member.Controllers
                 );
             return View(article);
         }
+        //unlike yazarken id adlı parametre göndereceğim makalenin idsi olacak o
+        public IActionResult Like(int id)
+        {
+            return View();
+        }
     }
 }
