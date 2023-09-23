@@ -1,5 +1,6 @@
 ﻿using Blog.Dal.Repositories.Interfaces.Concrete;
 using Blog.Model.Models.Enums;
+using Blog.Web.Models.VMs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,7 @@ namespace Blog.Web.Controllers
         }
         public IActionResult Detail(int id)//makale id
         {
-            //like ve comment taşımıyorum. dışarıda olmayacak. like comment yapanlar içeridekiler olacak
+            //like ve comment taşımıyorum. dışarıda olmayacak. like comment yapanlar içeridekiler olacak. liken count basacağım
 
             var article = _articleRepository.GetByDefault
                 (
