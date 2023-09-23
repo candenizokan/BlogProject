@@ -202,5 +202,23 @@ namespace Blog.Web.Areas.Member.Controllers
 
             return RedirectToAction("Detail", new {id=id});//detailde kullanmış olduğum paramete =id =>Detail(int id) oraya atayacağım id buradaki like'ın id si. //burada detail actionuna gönderdiğimiz parametre değişkeninin adı neyse elimizdeki makaleid yi atıyoruz çünkü Detail sayfası makaleID siz çalışmaz
         }
+
+        public async Task<IActionResult> UnLike(int id)
+        {
+            Article article = _articleRepository.GetDefault(a => a.ID == id); // İlgili makaleyi yakala
+
+            AppUser appUser = await _userManager.GetUserAsync(User); // Giriş yapmış kullanıcıyı bulun
+
+            // Kullanıcının daha önce bu makaleyi beğenip beğenmediğini kontrol edin
+            Like unlike = _likeRepository.GetDefault(article.ID,appUser.Id);
+
+            if (unlike != null)
+            {
+                // Eğer kullanıcı daha önce beğenmişse, beğeniyi kaldırın
+                _likeRepository.Delete(unlike);
+            }
+
+            return RedirectToAction("Detail", new { id = id }); // Detail sayfasına geri dönün
+        }
     }
 }

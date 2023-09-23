@@ -10,5 +10,7 @@ namespace Blog.Dal.Repositories.Interfaces.Concrete
         //like diğerleri gibi değil. ya oluşturursun ya silersin
         void Create(Like like);
         void Delete(Like like);
+
+        Like GetDefault(int id,string appUserId);
     }
 }

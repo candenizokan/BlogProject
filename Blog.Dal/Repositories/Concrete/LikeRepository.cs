@@ -4,6 +4,7 @@ using Blog.Model.Models.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Blog.Dal.Repositories.Concrete
@@ -29,6 +30,11 @@ namespace Blog.Dal.Repositories.Concrete
             //base'den almadığı için direkt siliyorum statuyu pasife çekme gibi bir durum yok burada
             _table.Remove(like);
             _context.SaveChanges();
+        }
+
+        public Like GetDefault(int id,string appUserId)
+        {
+            return _table.FirstOrDefault(like => like.ArticleID == id && like.AppUserID == appUserId);
         }
     }
 }
