@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Member\Data\" />
-    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\ArticlesWith\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
