@@ -1,1 +1,37 @@
 ﻿@model List<GetArticleVM>
+
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="@item.ImagePath" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text">@item.Content.Substring(0,150)</p>
+                        <p class="card-text"><small class="text-muted">Oluşma Tarihi:@item.CreatedDate.ToShortDateString()</small>
+                            @if (User.Identity.IsAuthenticated)//kişinin giriş bilgileri doğrulandıysa, Authenticate olduysa
+                            {
+                                //kişi aslında areanın içerisindeki anasayfadan detaile ulaşmaya çalışıyorsa
+                                <a asp-action="Detail" asp-controller="Article" asp-route-id="@item.ArticleID" asp-area="Member">Devamı için tıklayınız..</a>
+                            }
+                            else
+                            {
+                                <a asp-action="Detail" asp-controller="Article" asp-route-id="@item.ArticleID" asp-area="">Devamı için tıklayınız..</a>
+                            }
+                        </p>
+                        <p class="card-text">Yazar:<a asp-action="ProfileDetail" asp-route-id="@item.AppUserID"> @item.UserFullName</a></p>
+                        <p class="card-text">Kategorisi:@item.CategoryName</p>
+                        <p class="card-text">@item.Content.Substring(0,150)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
