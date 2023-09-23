@@ -198,7 +198,9 @@ namespace Blog.Web.Areas.Member.Controllers
 
             Like like = new Like() { ArticleID=id, Article=article, AppUser = appUser, AppUserID=appUser.Id};// like nesnesi oluştur. hangi makaleyi khangi kişi başında set et. bu like'ı oluşturacağım ihtiyacım var like repoya şimdi onu oluşturacağım article controllerda like repoya ihtiyacım var. DI ile alacağım ilikerepo ver diyeceğim like repo verecek
 
-            return View();
+            _likeRepository.Create(like);
+
+            return RedirectToAction("Detail", new {id=id});//detailde kullanmış olduğum paramete =id =>Detail(int id) oraya atayacağım id buradaki like'ın id si. //burada detail actionuna gönderdiğimiz parametre değişkeninin adı neyse elimizdeki makaleid yi atıyoruz çünkü Detail sayfası makaleID siz çalışmaz
         }
     }
 }
