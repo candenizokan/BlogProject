@@ -44,8 +44,9 @@ namespace Blog.Web.Views.Shared.Components.ArticlesWith
                     expression: a => a.Statu != Statu.Passive,
                     include: a => a.Include(a => a.Category).Include(a => a.AppUser),
                     orderBy: a => a.OrderByDescending(a => a.CreatedDate)
-                ); ;
+                ).Take(10).ToList() ;
 
+            return View(list);
         }
 
 
