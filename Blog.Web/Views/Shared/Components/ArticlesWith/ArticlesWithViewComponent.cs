@@ -6,5 +6,17 @@ namespace Blog.Web.Views.Shared.Components.ArticlesWith
     {
 
         //En güncel 10 makaleyi getirelim
+
+        public IViewComponentResult Invoke()
+        {
+
+
+
+
+        }
+
+
+
+
     }
 }
