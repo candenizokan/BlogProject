@@ -22,13 +22,15 @@ namespace Blog.Web.Areas.Member.Controllers
         private readonly ICategoryRepository _cRepo;
         private readonly IArticleRepository _articleRepository;
         private readonly IMapper _mapper;
+        private readonly ILikeRepository _likeRepository;
 
-        public ArticleController(UserManager<AppUser> userManager, ICategoryRepository cRepo, IArticleRepository articleRepository, IMapper mapper)
+        public ArticleController(UserManager<AppUser> userManager, ICategoryRepository cRepo, IArticleRepository articleRepository, IMapper mapper, ILikeRepository likeRepository)
         {
             _userManager = userManager;
             _cRepo = cRepo;
             _articleRepository = articleRepository;
             _mapper = mapper;
+            _likeRepository = likeRepository;
         }
         public async Task<IActionResult> Create()
         {
