@@ -1,5 +1,7 @@
 ﻿using Blog.Dal.Repositories.Interfaces.Concrete;
+using Blog.Web.Models.VMs
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Blog.Web.Views.Shared.Components.ArticlesWith
 {
@@ -23,7 +25,21 @@ namespace Blog.Web.Views.Shared.Components.ArticlesWith
             //article repoya itiyacım var di ile alacam
 
 
-
+            List<GetArticleVM> list = _articleRepository.GetByDefaults
+                (
+                    selector: a=> new GetArticleVM() // her articledan get article vm nesnesi vereceksin
+                    { 
+                        Title = a.Title,
+                        Content = a.Content,
+                        ImagePath = a.ImagePath,
+                        CreatedDate = a.CreatedDate,
+                        UserFullName=a.AppUser.FullName,
+                        CategoryName = a.Category.Name,
+                        AppUserID = a.AppUserID,
+                        ArticleID = a.ID
+                    },
+                    expression:
+                );
 
         }
 
