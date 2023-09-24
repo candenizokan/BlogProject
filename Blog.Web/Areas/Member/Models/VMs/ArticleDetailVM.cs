@@ -32,6 +32,10 @@ namespace Blog.Web.Areas.Member.Models.VMs
         public string UserImage { get; set; }
         public DateTime UserCreatedDate { get; set; }
 
+
+        //user->içerde online olan kullanıcının 
+        public string AppUserID { get; set; }//claimleri onaylanmış içerideki kişi- illa makale yazarı olmak zorunda değil
+
         // toDo: comment=> ???
     }
 }
