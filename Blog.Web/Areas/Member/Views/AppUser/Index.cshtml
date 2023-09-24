@@ -2,4 +2,11 @@
 
 <h4>Burası Member Area - AppUser Controller - index action</h4>
 
-@await Component.InvokeAsync("ArticlesWith")
+<div class="row">
+    <div class="col md-9">
+        @await Component.InvokeAsync("ArticlesWith")
+    </div>
+    <div class="col md-3">
+        @await Component.InvokeAsync("FollowedCategory")
+    </div>
+</div>
