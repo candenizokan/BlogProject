@@ -8,7 +8,7 @@
     {
         foreach (var item in Model)
         {
-            <a asp-action="" asp-controller="" asp-area="Member" asp-route-id="@item.ID">@item.Name</a>
+            <a asp-action="FilterWithCategory" asp-controller="Article" asp-area="Member" asp-route-id="@item.ID">@item.Name</a>
         }
 
     }
