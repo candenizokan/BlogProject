@@ -15,7 +15,7 @@ namespace Blog.Dal.Repositories.Abstract
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity//BaseEntity den ne tür gelirse gelsin tek bir base repository comet,category,article gelse crud yapacaksın
     {
         //benim dbcontext ile konuşmam lazım. ctor ile di.
-        private readonly ProjectContext _context;
+        protected readonly ProjectContext _context;//private idi protected yaptım. kalıtım aldığı yerde kullanmak için. örneğin category repoda kullanacam
         private readonly DbSet<T> _table;//t tipi neyse onun tablosu gelsin
 
         public BaseRepository(ProjectContext context)
