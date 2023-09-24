@@ -5,8 +5,12 @@
 <div class="row">
     <div class="col md-9">
         @await Component.InvokeAsync("ArticlesWith")
-    </div>
+    </div><br /><hr />
     <div class="col md-3">
         @await Component.InvokeAsync("FollowedCategory")
-    </div>
+    </div><br /><hr />
+    <div class="col md-3">
+        @await Component.InvokeAsync("OldUserViewComponent")
+    </div><br /><hr />
+    
 </div>
