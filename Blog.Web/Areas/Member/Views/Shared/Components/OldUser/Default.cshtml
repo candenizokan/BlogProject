@@ -1,0 +1,14 @@
+﻿@model List<UserDetail>
+
+@foreach (var item in Model)
+{
+    <div class="card">
+        <div class="card-body">
+            <p>
+                Yazar Adı: <a asp-action="" asp-controller="" asp-route-id="@item.UserID">@item.FullName</a>
+            </p>
+            <p>Tüm Makale Sayısı: @item.AllArticleCount</p>
+            <p>Tüm okunabilir makale sayısı: @item.AllNotPassiveArticleCount</p>
+        </div>
+    </div>
+}
