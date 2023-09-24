@@ -21,7 +21,7 @@ namespace Blog.Web.Areas.Member.Views.Shared.Components.FollowedCategory
             _userManager = userManager;
         }
 
-        public async Task<IViewComponentResult> Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             AppUser appUser = await _userManager.GetUserAsync((System.Security.Claims.ClaimsPrincipal)User);
 
