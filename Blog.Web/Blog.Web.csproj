@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Member\Data\" />
-    <Folder Include="Areas\Member\Views\Shared\Components\FollowedCategory\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
