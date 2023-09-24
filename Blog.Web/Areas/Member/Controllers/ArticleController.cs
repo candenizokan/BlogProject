@@ -162,8 +162,12 @@ namespace Blog.Web.Areas.Member.Controllers
             return RedirectToAction("List");
         }
 
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
+            //appuser var
+            AppUser appUser = await _userManager.GetUserAsync(User);//içeri giriş yapmış kullanıcı
+
+
             //articledetailvm oluşmalı.
 
             var article = _articleRepository.GetByDefault
@@ -181,7 +185,8 @@ namespace Blog.Web.Areas.Member.Controllers
                         UserID=a.AppUserID,
                         UserCreatedDate = a.AppUser.CreatedDate,
                         UserFullName = a.AppUser.FullName,
-                        UserImage = a.AppUser.ImagePath
+                        UserImage = a.AppUser.ImagePath,
+                        AppUserID = appUser.Id
 
                     },
                     expression: a=>a.Statu!=Statu.Passive && a.ID==id,
