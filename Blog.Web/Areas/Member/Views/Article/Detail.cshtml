@@ -37,7 +37,7 @@
                     <hr>
                 </div>
                 <div class="row m-3">
-                    @if (Model.Likes.Any(a=>a.AppUserID==Model.UserID))
+                    @if (Model.Likes.Any(a=>a.AppUserID==Model.UserID || a.AppUserID==Model.AppUserID))//kişi kendi olabilir unlike'a gider yada içerdeki başka kişiolabilir hangi like'ın appuser id eşleşiyor mu'
                     {//beğendiyse unlike a çekmem lazım
                         <a asp-action="UnLike" asp-controller="Article" asp-route-id="@Model.ArticleID">
                             <i class="fa fa-heart" style="color:red"></i>
