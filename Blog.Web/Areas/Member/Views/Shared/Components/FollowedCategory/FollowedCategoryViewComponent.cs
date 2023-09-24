@@ -1,6 +1,8 @@
-﻿namespace Blog.Web.Areas.Member.Views.Shared.Components.FollowedCategory
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Blog.Web.Areas.Member.Views.Shared.Components.FollowedCategory
 {
-    public class FollowedCategoryViewComponent
+    public class FollowedCategoryViewComponent:ViewComponent
     {
     }
 }
