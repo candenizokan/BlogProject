@@ -8,5 +8,6 @@ namespace Blog.Dal.Repositories.Interfaces.Concrete
 {
     public interface ICategoryRepository : IBaseRepository<Category>
     {
+        List<Category> GetCategoryWithId(string id);
     }
 }
